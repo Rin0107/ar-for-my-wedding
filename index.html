@@ -7,18 +7,15 @@
 </head>
 
 <body>
-  <!-- mindar-image="filterMinCF:小さくすると揺らぎが低減; filterBeta: 大きくすると遅延が低減" -->
-  <a-scene
-    mindar-image="imageTargetSrc: https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/image-tracking/assets/card-example/card.mind;"
-    color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false"
+  <!-- mindar-image="imageTargetSrc: ターゲットマーカー（ローカルファイル可）" mindar-image="filterMinCF:小さくすると揺らぎが低減; filterBeta: 大きくすると遅延が低減" -->
+  <a-scene mindar-image="imageTargetSrc: ./targets.mind;" color-space="sRGB"
+    renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false"
     device-orientation-permission-ui="enabled: false" mindar-image="filterMinCF:0.000001; filterBeta: 1000000">
     <a-assets>
       <!-- ターゲットマーカー -->
-      <img id="card"
-        src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/image-tracking/assets/card-example/card.png" />
+      <img id="card" src="./display.png" />
       <!-- 表示するモデル -->
-      <a-asset-item id="avatarModel"
-        src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/image-tracking/assets/card-example/softmind/scene.gltf"></a-asset-item>
+      <a-asset-item id="avatarModel" src="./display.glb"></a-asset-item>
     </a-assets>
 
     <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
@@ -26,7 +23,7 @@
       <!-- モデルの下に表示している画像アセットを表示 -->
       <a-plane src="#card" position="0 0 0" height="0.552" width="1" rotation="0 0 0"></a-plane>
       <!-- 画像アセットの上にモデルを表示 -->
-      <a-gltf-model rotation="0 0 0 " position="0 0 0.1" scale="0.005 0.005 0.005" src="#avatarModel"
+      <a-gltf-model rotation="0 0 0 " position="0 0 0.1" scale="1 1 1" src="#avatarModel"
         animation="property: position; to: 0 0.1 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate">
     </a-entity>
   </a-scene>
